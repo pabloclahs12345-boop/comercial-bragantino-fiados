@@ -3,12 +3,11 @@
   "version": "4.0.0",
   "private": true,
   "description": "Comercial Bragantino - Controle de Fiados V4 online",
-  "type": "module",
   "scripts": {
     "start": "node server.js"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=18"
   },
   "dependencies": {
     "express": "^4.21.2",
