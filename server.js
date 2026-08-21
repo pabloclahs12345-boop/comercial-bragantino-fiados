@@ -16,6 +16,7 @@ const server=http.createServer(async(q,r)=>{
  try{
   const u=new URL(q.url,"http://localhost"),D=read();
   if(q.method==="GET"){
+   if(u.pathname==="/health")return send(r,200,{ok:true,service:"comercial-bragantino"});
    if(u.pathname==="/")return send(r,200,file("index.html").toString(),"text/html; charset=utf-8");
    if(u.pathname==="/sw.js")return send(r,200,file("sw.js").toString(),"application/javascript");
    let p=path.join(__dirname,u.pathname.replace(/^\/+/,"")); if(fs.existsSync(p)&&fs.statSync(p).isFile())return send(r,200,file(path.basename(p)).toString(),mime[path.extname(p)]||"text/plain");
