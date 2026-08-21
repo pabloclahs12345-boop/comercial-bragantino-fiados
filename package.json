@@ -1,0 +1,17 @@
+{
+  "name": "comercial-bragantino-fiados",
+  "version": "4.0.0",
+  "private": true,
+  "description": "Comercial Bragantino - Controle de Fiados V4 online",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "body-parser": "^1.20.3"
+  }
+}

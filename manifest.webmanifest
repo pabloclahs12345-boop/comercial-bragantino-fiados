@@ -1,0 +1,11 @@
+{
+  "name": "Comercial Bragantino — Controle de Fiados",
+  "short_name": "Bragantino",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f3f5f7",
+  "theme_color": "#b40000",
+  "description": "Controle de clientes, fiados e pagamentos.",
+  "icons": []
+}

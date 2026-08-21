@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#b40000"><link rel="manifest" href="/manifest.webmanifest">
+<title>Comercial Bragantino — Fiados V4</title>
+<style>
+:root{
+  --red:#b40000;--red2:#d20b0b;--dark:#17191c;--bg:#f3f5f7;--card:#fff;
+  --green:#15803d;--yellow:#b45309;--muted:#66707a;--line:#e3e7eb;
+  --shadow:0 4px 18px rgba(0,0,0,.07);--radius:16px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);color:#20242a;-webkit-tap-highlight-color:transparent}
+button,input,textarea,select{font:inherit}
+button{border:0;border-radius:12px;padding:13px 16px;background:var(--red);color:#fff;font-weight:800;cursor:pointer;min-height:46px}
+button:active{transform:scale(.98)}
+button:disabled{opacity:.6;cursor:not-allowed}
+button.secondary{background:#edf0f2;color:#20242a}
+button.green{background:var(--green)}
+button.danger{background:#b91c1c}
+header{background:linear-gradient(135deg,var(--red),#8d0000);color:#fff;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;position:sticky;top:0;z-index:20;box-shadow:0 2px 12px #0003}
+.brand{font-weight:900;font-size:14px;line-height:1.15}
+.brand small{font-size:10px;opacity:.82;letter-spacing:.5px}
+.header-actions{display:flex;gap:6px;align-items:center}
+.header-actions button{min-height:40px;padding:8px 11px}
+.wrap{max-width:1100px;margin:auto;padding:16px 16px 105px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.card{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+.metric{font-size:27px;font-weight:900;margin-top:7px}
+.red{color:var(--red)}.greenTxt{color:var(--green)}.yellowTxt{color:var(--yellow)}
+.toolbar{display:flex;gap:9px;margin:16px 0;flex-wrap:wrap}
+.toolbar input{flex:1;min-width:220px}
+input,textarea,select{width:100%;padding:13px;border:1px solid #ccd2d8;border-radius:12px;background:#fff;outline:none}
+input:focus,textarea:focus,select:focus{border-color:var(--red);box-shadow:0 0 0 3px #b4000014}
+.field{margin:11px 0}.field label{display:block;font-weight:800;margin-bottom:6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.client{background:#fff;border-radius:var(--radius);padding:16px;margin:11px 0;box-shadow:var(--shadow);border:1px solid #edf0f2}
+.top{display:flex;justify-content:space-between;gap:12px}
+.client h3{font-size:17px}.amount{font-size:24px;font-weight:900}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.actions button{flex:0 0 auto}
+.badge{display:inline-block;padding:5px 9px;border-radius:99px;font-size:11px;font-weight:900;margin-top:7px}
+.late{background:#fee2e2;color:#991b1b}.soon{background:#fef3c7;color:#92400e}.ok{background:#dcfce7;color:#166534}.none{background:#e5e7eb;color:#374151}
+.tabs{display:flex;gap:8px;margin:0 0 16px;overflow:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{white-space:nowrap;min-height:42px;padding:10px 14px;background:#e9edf1;color:#333}
+.tab.active{background:#111;color:#fff}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden}
+th,td{padding:11px;border-bottom:1px solid #eee;text-align:left;font-size:14px}th{background:#f1f3f5}
+.tableWrap{overflow:auto}
+.modal{position:fixed;inset:0;background:#0008;display:none;align-items:flex-end;justify-content:center;padding:0;z-index:50}
+.modal.show{display:flex}
+.box{width:min(680px,100%);max-height:94vh;overflow:auto;background:#fff;border-radius:20px 20px 0 0;padding:20px 16px 26px}
+.box h2{margin-top:0}
+.msg{padding:10px;border-radius:9px;margin:10px 0}.err{background:#fee2e2;color:#991b1b}.success{background:#dcfce7;color:#166534}
+.login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:18px}
+.loginbox{width:min(410px,100%);background:#fff;padding:28px;border-radius:20px;box-shadow:0 12px 45px #0002}
+.loginbox button{width:100%}
+.bottom{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #ddd;padding:7px 5px max(7px,env(safe-area-inset-bottom));z-index:30;justify-content:space-around;box-shadow:0 -4px 18px #0000000b}
+.bottom button{background:transparent;color:#555;padding:7px 5px;min-height:54px;font-size:11px;line-height:1.1;flex:1}
+.bottom button.active{color:var(--red);font-weight:900}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.quick button{min-height:58px;font-size:13px}
+.receipt-total{text-align:center;padding:10px 0}
+.receipt-total h1{font-size:38px;margin:10px 0}
+.install-banner{display:none;background:#fff3cd;color:#664d03;border:1px solid #ffecb5;border-radius:14px;padding:12px;margin:12px 0}
+.install-banner button{margin-top:8px}
+.printOnly{display:none}
+@media(max-width:800px){
+  .cards{grid-template-columns:1fr 1fr}
+  .grid2{grid-template-columns:1fr}
+  .top{flex-direction:column}
+  .client .top>div:last-child{text-align:left!important}
+  .actions button{flex:1}
+  .toolbar button{flex:1}
+}
+@media(min-width:801px){
+  .bottom{display:none}
+  .modal{align-items:center;padding:14px}
+  .box{border-radius:18px;padding:22px}
+  .quick{max-width:700px}
+}
+@media(max-width:480px){
+  .wrap{padding:12px 12px 100px}
+  .cards{gap:9px}
+  .card{padding:13px}
+  .metric{font-size:20px}
+  .toolbar{gap:7px}
+  .toolbar input{min-width:100%}
+  .quick button{padding:10px 6px}
+  .actions button{width:100%}
+}
+@media print{
+  body{background:#fff}.noPrint,#app header,.toolbar,.tabs,.bottom{display:none!important}
+  .printOnly{display:block}.wrap{padding:0}.client{box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div id="login" class="login"><div class="loginbox"><h1 style="color:var(--red);margin-top:0">COMERCIAL BRAGANTINO</h1><h2>Controle de Fiados</h2><div id="loginMsg"></div><div class="field"><label>Usuário</label><input id="lu" value="admin" autocomplete="username"></div><div class="field"><label>Senha</label><input id="lp" type="password" value="1234" autocomplete="current-password"></div><button style="width:100%" onclick="login()">ENTRAR</button><p style="color:#666;font-size:13px">Acesso inicial: admin / 1234</p></div></div>
+<div id="app" style="display:none">
+<header><div class="brand">COMERCIAL BRAGANTINO<br><small>CONTROLE DE FIADOS</small></div><div class="header-actions"><span id="who"></span><button class="secondary" onclick="passwordForm()">⚙️</button><button class="secondary" onclick="logout()">Sair</button></div></header>
+<div class="wrap">
+<div class="tabs"><button class="tab active" onclick="view('home',this)">Resumo</button><button class="tab" onclick="view('clients',this)">Clientes</button><button class="tab" onclick="view('reports',this)">Relatórios</button><button class="tab" onclick="view('backup',this)">Backup</button></div>
+<section id="home">
+<div id="installBanner" class="install-banner">📲 Instale o sistema na tela inicial do celular para usar como aplicativo.<br><button onclick="installApp()">INSTALAR APLICATIVO</button></div>
+<div class="cards">
+  <div class="card">💰 Total a receber<div class="metric red" id="td">R$ 0,00</div></div>
+  <div class="card">🟢 Recebido hoje<div class="metric greenTxt" id="today">R$ 0,00</div></div>
+  <div class="card">👥 Clientes<div class="metric" id="nc">0</div></div>
+  <div class="card">⚠️ Vencido<div class="metric yellowTxt" id="ov">R$ 0,00</div></div>
+</div>
+<div class="quick">
+  <button class="green" onclick="openReceivePicker()">💰<br>RECEBER</button>
+  <button onclick="debtForm()">➕<br>NOVO FIADO</button>
+  <button class="secondary" onclick="clientForm()">👤<br>CLIENTES</button>
+</div>
+<div class="toolbar"><input id="search" placeholder="🔎 Pesquisar cliente..." oninput="renderHome()"></div>
+<h2>🔴 Clientes com dívida</h2><div id="homeList"></div>
+</section>
+<section id="clients" style="display:none"><div class="toolbar"><input id="search2" placeholder="🔎 Nome, telefone ou CPF" oninput="renderClients()"><button onclick="clientForm()">+ Cliente</button></div><div id="clientList"></div></section>
+<section id="reports" style="display:none"><div class="cards"><div class="card">Total lançado<div class="metric" id="rtD">R$ 0,00</div></div><div class="card">Total recebido<div class="metric greenTxt" id="rtP">R$ 0,00</div></div><div class="card">Em aberto<div class="metric red" id="rtO">R$ 0,00</div></div><div class="card">Pagamentos<div class="metric" id="rtN">0</div></div></div><h2>Maiores devedores</h2><div id="ranking"></div></section>
+<section id="backup" style="display:none"><div class="card"><h2>💾 Backup e segurança</h2><p>Baixe uma cópia dos clientes, dívidas, pagamentos e registros. Guarde o arquivo em outro local.</p><div class="actions"><button onclick="backup()">⬇️ Fazer backup</button><label><button class="secondary" onclick="document.getElementById('restoreFile').click()">📥 Restaurar backup</button><input id="restoreFile" type="file" accept=".json" style="display:none" onchange="restore(this)"></label></div><hr><h3>⚠️ Área administrativa</h3><button class="danger" onclick="clearAll()">Apagar todos os dados</button></div></section>
+</div>
+<div class="bottom"><button class="active" onclick="view('home',this)">🏠<br>Início</button><button onclick="view('clients',this)">👥<br>Clientes</button><button onclick="debtForm()">➕<br>Fiado</button><button onclick="openReceivePicker()">💰<br>Receber</button><button onclick="view('reports',this)">☰<br>Mais</button></div>
+</div>
+<div id="modal" class="modal"><div class="box" id="mb"></div></div>
+<script>
+const $=id=>document.getElementById(id);
+let user=localStorage.getItem("fiadoUser"),S={clients:[],debts:[],payments:[],logs:[]};
+const modalEl=$("modal");const M=v=>"R$ "+Number(v||0).toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2});const E=s=>String(s??"").replace(/[&<>"']/g,x=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[x]));
+async function api(u,o={}){o.headers={"Content-Type":"application/json",Authorization:"Bearer local",...(o.headers||{})};let r=await fetch(u,o),d=await r.json();if(!r.ok)throw Error(d.error||"Erro");return d}
+document.addEventListener("keydown",e=>{if(e.key==="Enter"&&$("login").style.display!=="none")login();});modalEl.addEventListener("click",e=>{if(e.target===modalEl)closeModal()});
+async function login(){
+  const msg=$("loginMsg"), btn=document.querySelector("#login button");
+  msg.className=""; msg.textContent="";
+  btn.disabled=true; btn.textContent="ENTRANDO...";
+  try{
+    const d=await api("/api/login",{method:"POST",body:JSON.stringify({user:$("lu").value.trim(),pass:$("lp").value})});
+    user=d.user; localStorage.setItem("fiadoUser",user);
+    await show();
+  }catch(e){
+    msg.className="msg err"; msg.textContent=e.message||"Não foi possível entrar.";
+  }finally{
+    btn.disabled=false; btn.textContent="ENTRAR";
+  }
+}
+function logout(){localStorage.removeItem("fiadoUser");location.reload()}
+async function show(){
+  $("login").style.display="none"; $("app").style.display="block"; $("who").textContent=user;
+  try{await load();}catch(e){
+    $("app").style.display="none"; $("login").style.display="flex";
+    const msg=$("loginMsg"); msg.className="msg err"; msg.textContent="Não foi possível carregar o sistema. Verifique se o servidor está rodando.";
+    console.error(e);
+  }
+  if("serviceWorker"in navigator)navigator.serviceWorker.register("/sw.js").catch(()=>{});
+}
+async function load(){S=await api("/api/state");renderAll()}
+function status(c){if(c.due<=0)return['none','Sem dívida'];let late=S.debts.filter(d=>d.clientId===c.id&&d.dueDate&&new Date(d.dueDate+"T23:59:59")<new Date()).some(d=>d.amount>0);if(late)return['late','Atrasado'];let soon=S.debts.filter(d=>d.clientId===c.id&&d.dueDate).some(d=>{let x=new Date(d.dueDate+"T23:59:59"),n=new Date();return x>=n&&x-new Date()<7*864e5});return soon?['soon','Vencendo'] : ['ok','Em dia']}
+function card(c){let [cl,st]=status(c);return `<div class="client"><div class="top"><div><h3 style="margin:0 0 5px">${E(c.name)}</h3><div>${E(c.phone||"Sem telefone")}</div><span class="badge ${cl}">${st}</span></div><div style="text-align:right"><small>Limite ${M(c.limit)}</small><div class="amount red">${M(c.due)}</div><small>Disponível ${M(c.available)}</small></div></div><div class="actions"><button onclick="details('${c.id}')">Ver conta</button>${c.due>0?`<button class="green" onclick="paymentForm('${c.id}')">Receber</button>`:""}${c.phone?`<button class="secondary" onclick="whatsapp('${E(c.phone)}','${E(c.name)}')">📱 WhatsApp</button>`:""}<button class="secondary" onclick="clientForm('${c.id}')">Editar</button><button class="danger" onclick="delClient('${c.id}')">Excluir</button></div></div>`}
+function renderAll(){renderHome();renderClients();renderReports()}
+function renderHome(){let q=($("search").value||"").toLowerCase(),cs=S.clients.filter(c=>(c.name+" "+c.phone).toLowerCase().includes(q)).filter(c=>c.due>0);$("nc").textContent=S.clients.length;let total=S.clients.reduce((a,c)=>a+c.due,0);$("td").textContent=M(total);let month=new Date().toISOString().slice(0,7);$("tm").textContent=M(S.payments.filter(p=>p.date.startsWith(month)).reduce((a,p)=>a+p.amount,0));let today=new Date().toISOString().slice(0,10);$("today").textContent=M(S.payments.filter(p=>p.date===today).reduce((a,p)=>a+p.amount,0));$("ov").textContent=M(S.clients.filter(c=>status(c)[0]==="late").reduce((a,c)=>a+c.due,0));$("homeList").innerHTML=cs.map(card).join("")||'<div class="card">Nenhum cliente com dívida.</div>'}
+function renderClients(){let q=($("search2").value||"").toLowerCase();$("clientList").innerHTML=S.clients.filter(c=>(c.name+" "+c.phone+" "+c.cpf).toLowerCase().includes(q)).map(card).join("")||'<div class="card">Nenhum cliente encontrado.</div>'}
+function renderReports(){let d=S.debts.reduce((a,x)=>a+x.amount,0),p=S.payments.reduce((a,x)=>a+x.amount,0);$("rtD").textContent=M(d);$("rtP").textContent=M(p);$("rtO").textContent=M(Math.max(0,d-p));$("rtN").textContent=S.payments.length;let top=[...S.clients].sort((a,b)=>b.due-a.due).filter(x=>x.due>0).slice(0,10);$("ranking").innerHTML=top.map((c,i)=>`<div class="card" style="margin:8px 0"><b>${i+1}. ${E(c.name)}</b><span style="float:right;color:var(--red);font-weight:900">${M(c.due)}</span></div>`).join("")||'<div class="card">Nenhum devedor.</div>'}
+function view(id,btn){["home","clients","reports","backup"].forEach(x=>document.getElementById(x).style.display=x===id?"block":"none");document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));if(btn)btn.classList.add("active");window.scrollTo(0,0)}
+function openModal(x){$("mb").innerHTML=x;modalEl.classList.add("show")}function closeModal(){modalEl.classList.remove("show")}
+function clientForm(id){let c=S.clients.find(x=>x.id===id)||{name:"",phone:"",cpf:"",limit:0,note:""};openModal(`<h2>${id?"Editar":"Novo"} cliente</h2><div class="field"><label>Nome</label><input id="cn" value="${E(c.name)}"></div><div class="grid2"><div class="field"><label>Telefone</label><input id="ct" value="${E(c.phone)}"></div><div class="field"><label>CPF</label><input id="cpf" value="${E(c.cpf)}"></div></div><div class="field"><label>Limite de crédito</label><input id="cl" inputmode="decimal" value="${c.limit||""}" placeholder="500,00"></div><div class="field"><label>Observação</label><textarea id="co">${E(c.note)}</textarea></div><div id="mm"></div><div class="actions"><button onclick="saveClient('${id||""}')">Salvar</button><button class="secondary" onclick="closeModal()">Cancelar</button></div>`)}
+async function saveClient(id){try{await api(id?"/api/clients/"+id:"/api/clients",{method:id?"PUT":"POST",body:JSON.stringify({name:$("cn").value,phone:$("ct").value,cpf:$("cpf").value,limit:$("cl").value,note:$("co").value,user})});closeModal();load()}catch(e){mm.className="msg err";mm.textContent=e.message}}
+async function delClient(id){if(!confirm("Excluir este cliente?"))return;try{await api("/api/clients/"+id,{method:"DELETE"});load()}catch(e){alert(e.message)}}
+function debtForm(id=""){let opts=S.clients.map(c=>`<option value="${c.id}" ${c.id===id?"selected":""}>${E(c.name)}</option>`).join("");openModal(`<h2>➕ Lançar fiado</h2><div class="field"><label>Cliente</label><select id="dc">${opts}</select></div><div class="field"><label>Descrição</label><input id="dd" value="Compra fiado"></div><div class="field"><label>Valor</label><input id="da" inputmode="decimal" placeholder="30,50 ou 30.50"></div><div class="grid2"><div class="field"><label>Data</label><input id="dt" type="date" value="${new Date().toISOString().slice(0,10)}"></div><div class="field"><label>Vencimento</label><input id="dv" type="date"></div></div><div class="field"><label>Observação</label><textarea id="dn"></textarea></div><div id="mm"></div><div class="actions"><button onclick="saveDebt()">Lançar débito</button><button class="secondary" onclick="closeModal()">Cancelar</button></div>`)}
+async function saveDebt(){try{await api("/api/debts",{method:"POST",body:JSON.stringify({clientId:$("dc").value,description:$("dd").value,amount:$("da").value,date:$("dt").value,dueDate:$("dv").value,note:$("dn").value,user})});closeModal();load()}catch(e){mm.className="msg err";mm.textContent=e.message}}
+function paymentForm(id){let c=S.clients.find(x=>x.id===id);openModal(`<h2>💰 Receber pagamento</h2><div class="card" style="margin-bottom:12px"><small>Dívida atual</small><div class="metric red">${M(c.due)}</div></div><div class="field"><label>Quanto vai receber?</label><input id="pa" inputmode="decimal" enterkeyhint="done" autocomplete="off" placeholder="0,00" autofocus></div><div class="grid2"><div class="field"><label>Forma de pagamento</label><select id="pm"><option>Dinheiro</option><option>PIX</option><option>Cartão</option><option>Transferência</option></select></div><div class="field"><label>Data</label><input id="pd" type="date" value="${new Date().toISOString().slice(0,10)}"></div></div><div class="field"><label>Observação</label><input id="pn" placeholder="Opcional"></div><div id="mm"></div><div class="actions"><button class="green" onclick="savePayment('${id}')">✅ CONFIRMAR RECEBIMENTO</button><button class="secondary" onclick="closeModal()">Cancelar</button></div>`);setTimeout(()=>{const x=$("pa");if(x)x.focus()},80)}
+async function savePayment(id){try{await api("/api/payments",{method:"POST",body:JSON.stringify({clientId:id,amount:$("pa").value,date:$("pd").value,note:$("pn").value,method:$("pm").value,user})});closeModal();load();setTimeout(()=>receipt(id),100)}catch(e){mm.className="msg err";mm.textContent=e.message}}
+function openReceivePicker(){let opts=S.clients.filter(c=>c.due>0).map(c=>`<option value="${c.id}">${E(c.name)} — ${M(c.due)}</option>`).join("");if(!opts){openModal(`<h2>💰 Receber</h2><p>Nenhum cliente possui dívida em aberto.</p><div class="actions"><button class="secondary" onclick="closeModal()">Fechar</button></div>`);return}openModal(`<h2>💰 Quem vai pagar?</h2><div class="field"><label>Cliente</label><select id="rc">${opts}</select></div><div class="actions"><button class="green" onclick="paymentForm($("rc").value)">Continuar</button><button class="secondary" onclick="closeModal()">Cancelar</button></div>`)}
+function whatsapp(phone,name){let p=String(phone||"").replace(/\\D/g,"");if(!p)return alert("Este cliente não tem telefone cadastrado.");if(p.length===11&&p.startsWith("0"))p=p.slice(1);if(!p.startsWith("55"))p="55"+p;window.open("https://wa.me/"+p+"?text="+encodeURIComponent("Olá, "+name+"!"),"_blank")}
+let deferredInstall=null;
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredInstall=e;const b=$("installBanner");if(b)b.style.display="block"});
+async function installApp(){if(!deferredInstall)return alert("Se o botão de instalação não aparecer, use o menu do navegador e escolha 'Instalar aplicativo' ou 'Adicionar à tela inicial'.");deferredInstall.prompt();await deferredInstall.userChoice;deferredInstall=null}
+window.addEventListener("appinstalled",()=>{const b=$("installBanner");if(b)b.style.display="none"});
+function details(id){let c=S.clients.find(x=>x.id===id),d=S.debts.filter(x=>x.clientId===id),p=S.payments.filter(x=>x.clientId===id);openModal(`<div class="printOnly"><h1>COMERCIAL BRAGANTINO</h1><h2>Conta de ${E(c.name)}</h2></div><h2>${E(c.name)}</h2><div class="grid2"><div class="card">Devendo<div class="metric red">${M(c.due)}</div></div><div class="card">Disponível<div class="metric greenTxt">${M(c.available)}</div></div></div><h3>Histórico de débitos</h3><div class="tableWrap"><table><tr><th>Data</th><th>Descrição</th><th>Vencimento</th><th>Valor</th></tr>${d.map(x=>`<tr><td>${x.date}</td><td>${E(x.description)}</td><td>${x.dueDate||"-"}</td><td>${M(x.amount)}</td></tr>`).join("")||"<tr><td colspan=4>Nenhum débito</td></tr>"}</table></div><h3>Pagamentos</h3><div class="tableWrap"><table><tr><th>Data</th><th>Valor</th><th>Obs.</th></tr>${p.map(x=>`<tr><td>${x.date}</td><td>${M(x.amount)}</td><td>${E(x.note)}</td></tr>`).join("")||"<tr><td colspan=3>Nenhum pagamento</td></tr>"}</table></div><div class="actions noPrint"><button onclick="paymentForm('${id}')">Receber</button><button class="secondary" onclick="window.print()">🖨️ Imprimir conta</button><button class="secondary" onclick="receipt('${id}')">🧾 Recibo</button><button class="secondary" onclick="closeModal()">Fechar</button></div>`)}
+function receipt(id){let c=S.clients.find(x=>x.id===id),p=S.payments.filter(x=>x.clientId===id).slice(-1)[0];if(!p)return;openModal(`<div style="text-align:center"><h2>COMERCIAL BRAGANTINO</h2><h3>RECIBO DE PAGAMENTO</h3><p>Cliente: <b>${E(c.name)}</b></p><h1>${M(p.amount)}</h1><p>Data: ${p.date}</p><p>Saldo após pagamento: <b>${M(c.due)}</b></p><hr><p>Obrigado!</p></div><div class="actions noPrint"><button onclick="window.print()">🖨️ Imprimir</button><button class="secondary" onclick="closeModal()">Fechar</button></div>`)}
+function passwordForm(){openModal(`<h2>⚙️ Alterar login</h2><div class="field"><label>Usuário atual</label><input value="${E(user)}" disabled></div><div class="field"><label>Senha atual</label><input id="cp" type="password"></div><div class="field"><label>Novo usuário</label><input id="nu"></div><div class="field"><label>Nova senha</label><input id="np" type="password"></div><div class="field"><label>Confirmar nova senha</label><input id="npp" type="password"></div><div id="mm"></div><div class="actions"><button onclick="changePass()">Salvar</button><button class="secondary" onclick="closeModal()">Cancelar</button></div>`)}
+async function changePass(){try{let d=await api("/api/password",{method:"POST",body:JSON.stringify({currentUser:user,currentPass:$("cp").value,newUser:$("nu").value,newPass:$("np").value,confirm:$("npp").value})});user=d.user;localStorage.setItem("fiadoUser",user);closeModal();who.textContent=user;alert("Login alterado com sucesso.")}catch(e){mm.className="msg err";mm.textContent=e.message}}
+function backup(){let blob=new Blob([JSON.stringify(S,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="backup-fiados-"+new Date().toISOString().slice(0,10)+".json";a.click()}
+async function restore(input){let f=input.files[0];if(!f)return;if(!confirm("Restaurar este backup substituirá os dados atuais. Continuar?"))return;try{let data=JSON.parse(await f.text());await api("/api/restore",{method:"POST",body:JSON.stringify({data})});await load();alert("Backup restaurado.")}catch(e){alert(e.message)}input.value=""}
+async function clearAll(){if(!confirm("ATENÇÃO: isso apagará todos os clientes, dívidas e pagamentos. Continuar?"))return;if(!confirm("CONFIRME novamente: apagar TUDO?"))return;await api("/api/clear",{method:"POST"});load()}
+if(user)show();
+</script><script id="bragantino-v3-enhancements">
+/* Comercial Bragantino V3 - melhorias de usabilidade e recebimento */
+(function(){
+  "use strict";
+  function money(v){
+    v = Number(String(v ?? "").replace(",", ".")) || 0;
+    return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+  }
+  function bindEnter(){
+    document.addEventListener("keydown", function(e){
+      if(e.key==="Enter"){
+        const el=document.activeElement;
+        if(el && (el.tagName==="INPUT" || el.tagName==="SELECT")){
+          const btn=[...document.querySelectorAll("button")].find(b=>{
+            const t=(b.innerText||b.textContent||"").trim().toLowerCase();
+            return /entrar|login|acessar/.test(t) && !b.disabled;
+          });
+          if(btn){ e.preventDefault(); btn.click(); }
+        }
+      }
+    });
+  }
+  function passwordToggle(){
+    document.querySelectorAll('input[type="password"]').forEach(function(inp){
+      if(inp.dataset.v3toggle) return;
+      inp.dataset.v3toggle="1";
+      const wrap=inp.parentElement;
+      if(!wrap) return;
+      const b=document.createElement("button");
+      b.type="button"; b.textContent="👁️";
+      b.title="Mostrar/ocultar senha";
+      b.style.cssText="margin-left:6px;padding:8px;border:0;background:transparent;cursor:pointer;font-size:16px;";
+      b.onclick=function(){ inp.type=inp.type==="password"?"text":"password"; };
+      wrap.appendChild(b);
+    });
+  }
+  function loadingButtons(){
+    document.addEventListener("click", function(e){
+      const b=e.target.closest("button");
+      if(!b) return;
+      const t=(b.innerText||"").trim().toLowerCase();
+      if(/entrar|acessar|login/.test(t) && !b.dataset.v3loading){
+        b.dataset.v3loading="1";
+        const old=b.innerHTML;
+        b.innerHTML="ENTRANDO...";
+        setTimeout(function(){
+          if(document.body.contains(b)){ b.innerHTML=old; delete b.dataset.v3loading; }
+        },3000);
+      }
+    }, true);
+  }
+  function init(){
+    bindEnter(); passwordToggle(); loadingButtons();
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init);
+  else init();
+})();
+</script></body></html>

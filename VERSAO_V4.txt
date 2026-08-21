@@ -1,0 +1,18 @@
+Comercial Bragantino - Controle de Fiados V4 Mobile
+
+Principais melhorias:
+- Interface mobile-first com aparência de aplicativo.
+- Menu inferior: Início, Clientes, Fiado, Receber e Mais.
+- Dashboard com Total a receber, Recebido hoje, Clientes e Vencido.
+- Tela de recebimento rápida com valor, forma de pagamento e confirmação.
+- Entrada de valores preparada para teclado numérico do celular.
+- Pesquisa instantânea.
+- Botão de WhatsApp no cartão do cliente.
+- PWA preparado para instalação na tela inicial.
+- Layout responsivo para celular, tablet e computador.
+- Modal otimizado para uso com uma mão.
+- Mantidos login, clientes, fiados, pagamentos, histórico, relatórios e backup.
+
+Login padrão:
+Usuário: admin
+Senha: 1234

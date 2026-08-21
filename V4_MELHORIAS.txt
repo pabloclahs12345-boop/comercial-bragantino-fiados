@@ -1,0 +1,16 @@
+COMERCIAL BRAGANTINO - V4 MOBILE PROFISSIONAL
+
+Implementado a partir da V3:
+1. Dashboard simplificado para celular.
+2. Menu inferior estilo aplicativo.
+3. Botões de ação grandes.
+4. Cartões de clientes otimizados para toque.
+5. Fluxo de recebimento parcial mais rápido.
+6. Teclado numérico/inputmode para valores.
+7. Pesquisa instantânea.
+8. Ação WhatsApp.
+9. Histórico de conta preservado.
+10. PWA instalável.
+11. Responsividade para celular/tablet/computador.
+12. Visual moderno com cards, alertas e espaçamento para toque.
+13. Forma de pagamento registrada nos novos pagamentos.

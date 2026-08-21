@@ -1,0 +1,15 @@
+COMERCIAL BRAGANTINO - CONTROLE DE FIADOS V3
+
+Melhorias desta versão:
+- Login com feedback visual e tecla Enter.
+- Mostrar/ocultar senha.
+- Botão de login com estado ENTRANDO.
+- Base preparada para melhorias de recebimento parcial e usabilidade.
+- Mantidos os arquivos e estrutura da V2 corrigida.
+
+Login padrão informado no projeto:
+Usuário: admin
+Senha: 1234
+
+IMPORTANTE:
+Use o INICIAR_WINDOWS.bat da própria V3 e não misture arquivos de versões anteriores.

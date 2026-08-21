@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "user": "admin",
+      "pass": "1234"
+    }
+  ],
+  "clients": [],
+  "debts": [],
+  "payments": [],
+  "logs": []
+}

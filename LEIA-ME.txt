@@ -1,0 +1,36 @@
+COMERCIAL BRAGANTINO — CONTROLE DE FIADOS V2
+
+LOGIN INICIAL
+Usuário: admin
+Senha: 1234
+
+NO WINDOWS
+1. Extraia esta pasta.
+2. Execute INICIAR_WINDOWS.bat.
+3. O navegador abrirá http://localhost:3090.
+
+RECURSOS
+- Dashboard
+- Clientes, editar/excluir
+- Limite e crédito disponível
+- Lançamento de fiado
+- Pagamento parcial/total
+- Histórico por cliente
+- Status: atrasado, vencendo, em dia, sem dívida
+- Relatórios e ranking
+- Recibo de pagamento
+- Impressão da conta
+- Backup e restauração
+- Alteração de login
+- Interface responsiva para celular
+- Manifest PWA para instalar como aplicativo
+
+CELULAR NA MESMA REDE
+O servidor escuta em 0.0.0.0:3090. No Windows, descubra o IPv4 com ipconfig e, no celular conectado ao mesmo Wi-Fi, abra:
+http://IP-DO-PC:3090
+
+ACESSO FORA DO WI-FI
+Para acessar de qualquer lugar, este projeto precisa ser hospedado em um servidor/serviço online. Esta entrega não cria uma conta de hospedagem automaticamente. O banco local não é sincronizado com a internet.
+
+IMPORTANTE
+Esta V2 continua totalmente separada do PDV Comercial Bragantino. Ela possui seu próprio fiados-data.json.
