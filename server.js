@@ -1,6 +1,8 @@
 const http=require("http"),fs=require("fs"),path=require("path"),crypto=require("crypto");
 const PORT = process.env.PORT || 3000;
 const empty=()=>({users:[{user:"admin",pass:"1234"}],clients:[],debts:[],payments:[],logs:[]});
+const DB = process.env.DB_PATH || path.join(__dirname, "fiados-data.json");
+
 function read(){if(!fs.existsSync(DB))fs.writeFileSync(DB,JSON.stringify(empty(),null,2));try{return JSON.parse(fs.readFileSync(DB,"utf8"))}catch{return empty()}}
 function save(d){fs.writeFileSync(DB,JSON.stringify(d,null,2))}
 function money(v){let s=String(v??"").trim().replace(/\s/g,"");if(s.includes(",")&&s.includes("."))s=s.replace(/\./g,"").replace(",",".");else s=s.replace(",",".");let n=Number(s);return Number.isFinite(n)?Math.round(n*100)/100:0}
