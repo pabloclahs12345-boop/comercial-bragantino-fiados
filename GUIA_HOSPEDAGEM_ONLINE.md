@@ -28,3 +28,14 @@ npm start
 
 Depois abra:
 http://localhost:3000
+
+
+## Correção para Render — CommonJS
+
+O `server.js` original usa `require(...)`, portanto o projeto deve ser executado como CommonJS. O `package.json` desta versão corrigida não usa `"type": "module"`.
+
+No Render, mantenha:
+- Build Command: `npm install`
+- Start Command: `npm start`
+
+Depois faça um novo deploy.
